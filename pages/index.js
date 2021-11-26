@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import ItemCard from '../components/ItemCard'
-import { useItems } from '../context/ItemContext'
+import { ItemContext, useItems } from '../context/ItemContext'
 import { useUser } from '../context/UserContext'
 
 export default function Home() {
@@ -14,13 +14,24 @@ export default function Home() {
    * and map through all of the items
    * to create a gallery of ItemCard components
   */
+  const { items, setItems } = useItems()
 
   const addToCart = (itemName) => {
     /* TODO: Write function that updates the
      * user context object's cart 
      * to include the added item
     */
+
+    // if (!user.cart[itemName]) {
+    //   user.cart[itemName] = 1
+      
+    // } else {
+    //   user.cart[itemName] += 1
+    // }
+
+    user.cart.push(itemName)
   }
+
 
   return (
     <div>
@@ -44,7 +55,9 @@ export default function Home() {
           * to display an ItemCard with the data for each
           */
           }
-          <p>plants will go here</p>
+          {/* <p>{JSON.stringify(items)}</p> */}
+          <p>{items.map(e => (
+            <ItemCard useItems name={e.name} img={e.img} stock={e.stock} price={e.price} add={addToCart}/>))}</p>
         </div>
       </main>
     </div>

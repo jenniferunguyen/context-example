@@ -4,8 +4,8 @@ import { createContext, useContext } from 'react';
 
 /* Creates the actual Context objects */
 export const ItemContext = createContext({
-  item: {}, // data object stored
-  setItem: () => {} // updater function so child components can modify
+  items: {}, // data object stored
+  setItems: () => {} // updater function so child components can modify
 });
 
 /* 
