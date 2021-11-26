@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ItemCard from '../components/ItemCard'
 import { ItemContext, useItems } from '../context/ItemContext'
 import { useUser } from '../context/UserContext'
+import { useState } from 'react'
 
 export default function Home() {
   /* Get access to the User Context 
@@ -15,6 +16,8 @@ export default function Home() {
    * to create a gallery of ItemCard components
   */
   const { items, setItems } = useItems()
+
+  const [ cartNum, setCartNum ] = useState("")
 
   const addToCart = (itemName) => {
     /* TODO: Write function that updates the
@@ -30,8 +33,11 @@ export default function Home() {
     // }
 
     user.cart.push(itemName)
+    setCartNum(user.cart.length)
+    
   }
 
+  
 
   return (
     <div>
@@ -44,10 +50,11 @@ export default function Home() {
         <h1>Hey there, {user.name}</h1>
         <Link href="/cart" >
           <div class="cart">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-        </svg>
-        </div>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <p>{cartNum}</p>
+          </div>
         </Link>
         </div>
         <div class="gallery">
