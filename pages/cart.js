@@ -15,7 +15,7 @@ export default function Checkout() {
     if (nameCatalog.includes(e)) {
       let item = items.filter(i => i.name == e)
       return (
-        <article className="card">
+        <article className="card-in-cart">
           <div className="img-wrapper">
             <img src={item[0].img} alt={item[0].name} />
           </div>
@@ -37,13 +37,10 @@ export default function Checkout() {
       <main>
         <h1>{user.name}, let's checkout!</h1>
         <p>You have {user.cart.length} items in your cart.</p>
-        {/* DELETE LINE BELOW -------------------------------------------------------------------------------------- */}
-        {/* <p>You have {Object.values(user.cart).length} items in your cart.</p> */}
         <div>
           {/* TODO: Style the checkout page so the cart maps through
             * to a component for each item in the cart
           */}
-          {/* <p>{JSON.stringify(user.cart)}</p> */}
           {user.cart.map(thing => displayCard(thing))}
         </div>
         <p>Total: {user.total}</p>

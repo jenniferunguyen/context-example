@@ -9,8 +9,9 @@ export default function ItemCard({ name, img, stock, price, add }) {
             <h2 className="plant-name">{name}</h2>
             <p className="price">${price}</p>
             {/* DELETE STOCK------------------------------------------------------------------------------------ */}
-            {/* <p className="stock">{stock} in Stock</p>  */}
-            <button onClick={() => add(name, price)} className={stock <= 0 ? 'disabled' : ''}>Add to Cart</button>
+            <p className="stock">{stock} in Stock</p> 
+            {/* TODO disable button if item is out of stock */}
+            <button onClick={() => stock <= 0 ? 'disabled': add(name, price)} >Add to Cart</button>
         </div>
         <style jsx>{`
         .card .content button:hover {
