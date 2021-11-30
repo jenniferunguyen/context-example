@@ -32,12 +32,11 @@ export default function Home() {
     currentTotal += itemPrice 
     user.total = currentTotal
     // update stock
-    let thisItem = items.filter(i => i.name == itemName)[0]
-    console.log(thisItem)
-    let otherItems = items.filter(i => i.name != itemName)
-    thisItem.stock -= 1
-    otherItems.push(thisItem)
-    setItems(otherItems)
+    let theItem = items.filter(i => i.name == itemName)[0]
+    let theIndex = items.findIndex(i => i.name == itemName)
+    theItem.stock -= 1
+    items[theIndex].stock = theItem.stock
+    console.log(items[theIndex])
   }
 
   
