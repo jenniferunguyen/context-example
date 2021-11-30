@@ -13,7 +13,8 @@ function MyApp({ Component, pageProps }) {
    */
   const [user, setUser] = useState({
     name: "Murphy",
-    cart: []
+    cart: [],
+    total: 0
   })
   const userValue = {
     user, setUser

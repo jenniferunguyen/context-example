@@ -17,9 +17,11 @@ export default function Home() {
   */
   const { items, setItems } = useItems()
 
-  const [ cartNum, setCartNum ] = useState("")
+  const [ cartNum, setCartNum ] = useState(user.cart.length)
 
-  const addToCart = (itemName) => {
+  // const [ cartTotal, setTotal ] = useState(user.total)
+
+  const addToCart = (itemName, itemPrice) => {
     /* TODO: Write function that updates the
      * user context object's cart 
      * to include the added item
@@ -34,7 +36,9 @@ export default function Home() {
 
     user.cart.push(itemName)
     setCartNum(user.cart.length)
-    
+    let currentTotal = user.total
+    currentTotal += itemPrice 
+    user.total = currentTotal
   }
 
   
@@ -64,7 +68,7 @@ export default function Home() {
           }
           {/* <p>{JSON.stringify(items)}</p> */}
           <p>{items.map(e => (
-            <ItemCard useItems name={e.name} img={e.img} stock={e.stock} price={e.price} add={addToCart}/>))}</p>
+            <ItemCard useItems key={e.name} name={e.name} img={e.img} stock={e.stock} price={e.price} add={addToCart}/>))}</p>
         </div>
       </main>
     </div>

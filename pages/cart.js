@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import ItemCard from '../components/ItemCard'
 import { useUser } from '../context/UserContext'
+import { useState } from 'react'
 
 import { ItemContext, useItems } from '../context/ItemContext'
-
 
 export default function Checkout() {
   const { user, setUser } = useUser()
@@ -14,7 +14,6 @@ export default function Checkout() {
   const displayCard = e => {
     if (nameCatalog.includes(e)) {
       let item = items.filter(i => i.name == e)
-      console.log(item[0].price)
       return (
         <article className="card">
           <div className="img-wrapper">
@@ -45,8 +44,9 @@ export default function Checkout() {
             * to a component for each item in the cart
           */}
           {/* <p>{JSON.stringify(user.cart)}</p> */}
-          <p>{user.cart.map(thing => displayCard(thing))}</p>
+          {user.cart.map(thing => displayCard(thing))}
         </div>
+        <p>Total: {user.total}</p>
       </main>
     </div>
   )
