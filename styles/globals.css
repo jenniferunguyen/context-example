@@ -59,23 +59,26 @@ a {
 }
 
 .gallery {
-  width: 100%;
+  max-width: 100%;
+  width: fit-content;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .card {
-  flex: 1;
+  /* flex: 1; */
   overflow: hidden;
   border-radius: 20px;
-  margin: 1em;
+  margin: 0.25em;
+  width: 48%; 
 }
 
 .card .img-wrapper {
   overflow: hidden;
   max-height: 370px;
 }
+
 .card .img-wrapper img {
   display: block;
   overflow: hidden;
@@ -101,13 +104,11 @@ a {
   padding: 5px 0;
 }
 
+.card .content p {
+  padding-bottom: 5px;
+}
+
 .card .content .price {
   font-size: 1.5rem;
   padding-bottom: 20px;
 }
-
-/* @media screen and (max-width:600px) {
-  .card {
-    width:50%;
-  }
-} */

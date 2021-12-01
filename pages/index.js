@@ -36,7 +36,6 @@ export default function Home() {
     let theIndex = items.findIndex(i => i.name == itemName)
     theItem.stock -= 1
     items[theIndex].stock = theItem.stock
-    console.log(items[theIndex])
   }
 
   
@@ -64,8 +63,8 @@ export default function Home() {
           * to display an ItemCard with the data for each
           */
           }
-          <p>{items.map(e => (
-            <ItemCard useItems key={e.name} name={e.name} img={e.img} stock={e.stock} price={e.price} add={addToCart}/>))}</p>
+          {items.map(e => (
+            <ItemCard useItems key={e.name} name={e.name} img={e.img} stock={e.stock} price={e.price} add={addToCart}/>))}
         </div>
       </main>
     </div>
